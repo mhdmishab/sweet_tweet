@@ -4,6 +4,7 @@ export const RequestTwitter = async () => {
   try {
     await axios.get('/home')
       .then(response => {
+        console.log(response.data);
         window.location.href = response.data.Url;
       })
       .catch(error => {
