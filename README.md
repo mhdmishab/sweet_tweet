@@ -74,6 +74,13 @@ Run the following command to install nodemon globally. This will help with serve
  npm install -g nodemon
  
 ```
+#### Step 7: Start Running the Back-end 
+
+After navigating to the `server` directory, start the backend using the following command:
+```bash
+npm run dev
+ 
+```
 
 ## Conclusion
 
