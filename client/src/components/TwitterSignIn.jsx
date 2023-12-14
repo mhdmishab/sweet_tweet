@@ -23,6 +23,7 @@ function TwitterSignIn() {
 
   return (
     <div className="flex bg-black justify-center items-center h-screen flex-col">
+      <h1 className="text-white text-2xl font-bold m-3">Sweet Tweet</h1>
       <img className='w-96 h-96' src='https://img.freepik.com/free-vector/new-twitter-logo-x-icon-black-background_1017-45427.jpg'/>
     <button
       type="button"
