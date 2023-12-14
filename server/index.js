@@ -18,7 +18,9 @@ app.use(express.json());
 
 
 // Routes
-
+app.use('/test',(req,res)=>{
+  res.send("ok")
+})
 app.use('/api',route);
 app.use((err,req,res,next)=>{
   console.error(err.stack);
