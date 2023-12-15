@@ -40,8 +40,8 @@ export const TwitterAccessTokenGenerator = async (req, res,next) => {
   //   console.log(image,name,username)
   //   res.redirect(`http://localhost:5173/?image=${image}&name=${name}&username=${username}`);
   //  }catch(err){console.log(err)}
-  //  res.redirect(`http://localhost:5173/`);
-    res.redirect(`https://sweettweet.netlify.app`);
+   res.redirect(`http://localhost:5173/`);
+    // res.redirect(`https://sweettweet.netlify.app`);
   } catch (error) {
     console.error(error.message);
     next();

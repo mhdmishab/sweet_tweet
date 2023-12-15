@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logOutApi, postTweet } from '../services/UserService';
+import { logOutApi, postTweet, profileData } from '../services/UserService';
 import {message} from 'antd'
+import axiosPublic from '../api/api';
 
 
 
@@ -14,23 +15,40 @@ function HomePage() {
   const [cookie, setCookie] = useState('');
   const [logout,setLogout]=useState(false)
   const [text,setText]=useState('')
+  const [data,setData]=useState({})
 
   useEffect(() => {
-    const cookie = decodeURIComponent(document.cookie);
-    if (!cookie) {
-      navigate('/login');
-    }
-    const cookieValue = cookie.split("=")[1];
-    console.log(cookieValue)
-    setCookie(cookieValue);
+    
+      try {
+        const cookie = decodeURIComponent(document.cookie);
+        if (!cookie) {
+          navigate('/login');
+        }
+        const cookieValue = cookie.split("=")[1];
+        console.log(cookieValue);
+        setCookie(cookieValue);
 
-    // profileData(cookieValue).then((response) => {
-    //   setImage(response.data.image);
-    //   setName(response.data.name);
-    //   setUsername(response.data.username)
+        if(!logout){
+          
+        axiosPublic.post('/profile',{cookieValue}).then((response)=>{
+          console.log(response.data);
+          setImage(response.data.image);
+          setName(response.data.name);
+          setUsername(response.data.username);
+          
+        }).catch((error)=>{
+          console.log(error)
+          throw(error);
+        })
+        }
+      }catch(error){
+        console.log(error)
+      }
+   
 
-    // })
-  }, [logout])
+  }, [logout]);
+
+
 
   const handleLogout = () => {
     logOutApi(cookie).then((resposne) => {

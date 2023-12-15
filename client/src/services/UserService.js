@@ -16,10 +16,11 @@ export const RequestTwitter = async () => {
   }
 };
 
-export const profileData=async(cookieValue)=>{
+export const profileData=async(cookieValue,setData)=>{
   console.log(cookieValue)
   await axios.post('/profile',{cookieValue}).then((response)=>{
-    return response.data
+    console.log(response);
+    return response.data;
   }).catch((error)=>{
     console.log(error)
     throw(error);
